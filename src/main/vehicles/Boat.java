@@ -1,8 +1,8 @@
 package main.vehicles;
 
 public class Boat extends SeaVehicle {
-    boolean hasMotor;
-    int motorPower;
+    private final boolean hasMotor;
+    private final int motorPower;
 
     public Boat(int priceToBuy, int capacity, String id, String manufacturer, String fuelType, int minDepth, boolean hasMotor, int motorPower) {
         super(priceToBuy, capacity, id, manufacturer, fuelType, minDepth);
@@ -10,5 +10,12 @@ public class Boat extends SeaVehicle {
         this.motorPower = motorPower;
     }
 
+    // Getters
+    public boolean isHasMotor() {
+        return hasMotor;
+    }
 
+    public int getMotorPower() {
+        return motorPower;
+    }
 }

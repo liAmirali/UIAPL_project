@@ -1,13 +1,13 @@
 package main;
 
 public class Person {
-    String name;
-    String lastname;
-    String birthdayYear;
-    String city;
-    String job;
-    boolean gender;
-    int salary;
+    private final String name;
+    private final String lastname;
+    private final String birthdayYear;
+    private final String city;
+    private final String job;
+    private final boolean gender;
+    private final int salary;
 
     public Person(String name, String lastname, String birthdayYear, String city, String job, boolean gender, int salary) {
         this.name = name;
@@ -19,6 +19,7 @@ public class Person {
         this.salary = salary;
     }
 
+    // Getters
     public String getName() {
         return name;
     }

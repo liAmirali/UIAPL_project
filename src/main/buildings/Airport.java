@@ -30,6 +30,7 @@ public class Airport extends Terminal {
         return isInternational;
     }
 
+    // Setters
     public void setRunwayCount(int runwayCount) {
         if (runwayCount <= 0) {
             this.runwayCount = 1;

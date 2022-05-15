@@ -1,8 +1,8 @@
 package main.vehicles;
 
 public class Ship extends SeaVehicle {
-    String type;
-    int length;
+    final private String type;
+    final private int length;
     enum SafetyEquipments {
         LIFEBOATS, SURVIVAL_SUITS,
     }
@@ -11,5 +11,14 @@ public class Ship extends SeaVehicle {
         super(priceToBuy, capacity, id, manufacturer, fuelType, minDepth);
         this.type = type;
         this.length = length;
+    }
+
+    // Getters
+    public String getType() {
+        return type;
+    }
+
+    public int getLength() {
+        return length;
     }
 }
