@@ -6,25 +6,25 @@ import java.util.ArrayList;
 
 public class RailwayStation extends Terminal {
     private final ArrayList<Train> trains;
-    private final int inputRail;
-    private final int outputRail;
+    private final int inputRailCount;
+    private final int outputRailCount;
 
-    public RailwayStation(int costToBuild, String cityName, String name, String address, int area, int vehicleCount, int inputRail, int outputRail) {
-        super(costToBuild, cityName, name, address, area, vehicleCount);
+    public RailwayStation(int costToBuild, String cityName, String name, String address, int area, int inputRailCount, int outputRailCount) {
+        super(costToBuild, cityName, name, address, area);
         this.trains = new ArrayList<>();
-        this.inputRail = inputRail;
-        this.outputRail = outputRail;
+        this.inputRailCount = inputRailCount;
+        this.outputRailCount = outputRailCount;
     }
 
     public ArrayList<Train> getTrains() {
         return trains;
     }
 
-    public int getInputRail() {
-        return inputRail;
+    public int getInputRailCount() {
+        return inputRailCount;
     }
 
-    public int getOutputRail() {
-        return outputRail;
+    public int getOutputRailCount() {
+        return outputRailCount;
     }
 }

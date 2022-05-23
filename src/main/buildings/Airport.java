@@ -10,8 +10,8 @@ public class Airport extends Terminal {
     final private boolean isInternational;
 
     // Constructors
-    public Airport(int costToBuild, String cityName, String name, String address, int area, int vehicleCount, int runwayCount, boolean isInternational) {
-        super(costToBuild, cityName, name, address, area, vehicleCount);
+    public Airport(int costToBuild, String cityName, String name, String address, int area, int runwayCount, boolean isInternational) {
+        super(costToBuild, cityName, name, address, area);
         this.runwayCount = runwayCount;
         this.isInternational = isInternational;
         this.airVehicles = new ArrayList<>();

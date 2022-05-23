@@ -8,9 +8,9 @@ public class ShippingPort extends Terminal {
     private final ArrayList<SeaVehicle> seaVehicles;
     private int wharfCount;
 
-    public ShippingPort(int costToBuild, String cityName, String name, String address, int area, int vehicleCount, ArrayList<SeaVehicle> seaVehicles, int wharfCount) {
-        super(costToBuild, cityName, name, address, area, vehicleCount);
-        this.seaVehicles = seaVehicles;
+    public ShippingPort(int costToBuild, String cityName, String name, String address, int area, int wharfCount) {
+        super(costToBuild, cityName, name, address, area);
+        this.seaVehicles = new ArrayList<>();
         this.wharfCount = wharfCount;
     }
 

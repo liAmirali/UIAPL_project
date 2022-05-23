@@ -10,16 +10,15 @@ abstract public class Terminal {
     private final String name;
     private final String address;
     private final int area;
-    private int vehicleCount;
+    private int vehicleCount = 0;
     private final ArrayList<Person> drivers;
 
-    public Terminal(int costToBuild, String cityName, String name, String address, int area, int vehicleCount) {
+    public Terminal(int costToBuild, String cityName, String name, String address, int area) {
         this.costToBuild = costToBuild;
         this.cityName = cityName;
         this.name = name;
         this.address = address;
         this.area = area;
-        this.vehicleCount = vehicleCount;
         this.drivers = new ArrayList<>();
     }
 
@@ -56,7 +55,6 @@ abstract public class Terminal {
     public void setVehicleCount(int vehicleCount) {
         this.vehicleCount = vehicleCount;
     }
-
 
     @Override
     public String toString() {
