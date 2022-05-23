@@ -56,4 +56,18 @@ abstract public class Terminal {
     public void setVehicleCount(int vehicleCount) {
         this.vehicleCount = vehicleCount;
     }
+
+
+    @Override
+    public String toString() {
+        return "Terminal{" +
+                "costToBuild=" + costToBuild +
+                ", cityName='" + cityName + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", area=" + area +
+                ", vehicleCount=" + vehicleCount +
+                ", drivers=" + drivers +
+                '}';
+    }
 }

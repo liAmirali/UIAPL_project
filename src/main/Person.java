@@ -3,13 +3,13 @@ package main;
 public class Person {
     private final String name;
     private final String lastname;
-    private final String birthdayYear;
+    private final int birthdayYear;
     private final String city;
     private final String job;
     private final boolean gender;
     private final int salary;
 
-    public Person(String name, String lastname, String birthdayYear, String city, String job, boolean gender, int salary) {
+    public Person(String name, String lastname, int birthdayYear, String city, String job, boolean gender, int salary) {
         this.name = name;
         this.lastname = lastname;
         this.birthdayYear = birthdayYear;
@@ -28,7 +28,7 @@ public class Person {
         return lastname;
     }
 
-    public String getBirthdayYear() {
+    public int getBirthdayYear() {
         return birthdayYear;
     }
 

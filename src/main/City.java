@@ -15,8 +15,10 @@ public class City {
 
     public City(int population, int budget) {
         this.citizens = new ArrayList<>();
-        this.hotels = new ArrayList<>();;
-        this.terminals = new ArrayList<>();;
+        this.hotels = new ArrayList<>();
+
+        this.terminals = new ArrayList<>();
+
         this.population = population;
         this.budget = budget;
     }

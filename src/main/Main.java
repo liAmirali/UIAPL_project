@@ -2,12 +2,15 @@ package main;
 
 import main.Console.MainConsole;
 
-import java.io.Console;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        City city = new City(100, 10000);
+        ArrayList<City> cities = new ArrayList<>();
+        cities.add(new City(100, 10000));
 
-        MainConsole.showMainMenu();
+        MainConsole console0 = new MainConsole(cities.get(0));
+
+        console0.showMainMenu();
     }
 }
