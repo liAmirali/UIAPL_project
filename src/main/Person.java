@@ -4,7 +4,7 @@ public class Person {
     private final String name;
     private final String lastname;
     private final int birthdayYear;
-    private final String city;
+    private final String cityName;
     private final String job;
     private final boolean gender;
     private final int salary;
@@ -13,7 +13,7 @@ public class Person {
         this.name = name;
         this.lastname = lastname;
         this.birthdayYear = birthdayYear;
-        this.city = city;
+        this.cityName = city;
         this.job = job;
         this.gender = gender;
         this.salary = salary;
@@ -32,8 +32,8 @@ public class Person {
         return birthdayYear;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityName() {
+        return cityName;
     }
 
     public String getJob() {
@@ -53,7 +53,7 @@ public class Person {
         return "Name: " + name +
                 ", Last Name: " + lastname +
                 ", Birthday Year: " + birthdayYear +
-                ", City: " + city +
+                ", City: " + cityName +
                 ", Job: " + job +
                 ", Gender: " + gender +
                 ", Salary:" + salary;

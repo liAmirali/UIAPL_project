@@ -11,17 +11,17 @@ public class Travel implements Comparable<Travel> {
     private static int count = 0;
     private final int ID;
     private Terminal originTerminal;
-    private Terminal sourceTerminal;
+    private Terminal destinationTerminal;
     private final ArrayList<Person> travelers;
     private Person driver;
     private Vehicle vehicle;
     private LocalDateTime dateTime;
     private int cost;
 
-    public Travel(Terminal originTerminal, Terminal sourceTerminal, Person driver, Vehicle vehicle, LocalDateTime dateTime, int cost) {
+    public Travel(Terminal originTerminal, Terminal destinationTerminal, Person driver, Vehicle vehicle, LocalDateTime dateTime, int cost) {
         this.ID = count++;
         this.originTerminal = originTerminal;
-        this.sourceTerminal = sourceTerminal;
+        this.destinationTerminal = destinationTerminal;
         this.travelers = new ArrayList<>();
         this.driver = driver;
         this.vehicle = vehicle;
@@ -41,12 +41,8 @@ public class Travel implements Comparable<Travel> {
         this.originTerminal = originTerminal;
     }
 
-    public Terminal getSourceTerminal() {
-        return sourceTerminal;
-    }
-
-    public void setSourceTerminal(Terminal sourceTerminal) {
-        this.sourceTerminal = sourceTerminal;
+    public Terminal getDestinationTerminal() {
+        return destinationTerminal;
     }
 
     public ArrayList<Person> getTravelers() {

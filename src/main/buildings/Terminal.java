@@ -1,8 +1,11 @@
 package main.buildings;
 
+import main.City;
+import main.Country;
 import main.Person;
 import main.Travel.Safarable;
 import main.Travel.Travel;
+import main.exceptions.CityDoesNotExistsException;
 import main.vehicles.Vehicle;
 
 import java.time.LocalDateTime;
@@ -10,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 abstract public class Terminal implements Safarable {
+    public static final String OUT_GOING = "OUT_GOING";
+    public static final String IN_GOING = "IN_GOING";
+    public static final String BOTH_OUT_IN_GOING = "BOTH_OUT_IN_GOING";
+
     private final int costToBuild;
     private final String cityName;
     private final String name;
@@ -85,23 +92,53 @@ abstract public class Terminal implements Safarable {
     }
 
     @Override
-    public Travel createNewTravel(Terminal originTerminal, Terminal sourceTerminal, Person driver, Vehicle vehicle, LocalDateTime dateTime, int cost) {
-        Travel newTravel = new Travel(originTerminal, sourceTerminal, driver, vehicle, dateTime, cost);
+    public Travel createNewTravel(Terminal originTerminal, Terminal destinationTerminal, Person driver, Vehicle vehicle, LocalDateTime dateTime, int cost) {
+        Travel newTravel = new Travel(originTerminal, destinationTerminal, driver, vehicle, dateTime, cost);
         originTerminal.getTravels().add(newTravel);
-        sourceTerminal.getTravels().add(newTravel);
+        destinationTerminal.getTravels().add(newTravel);
 
-        sourceTerminal.getDrivers().removeIf(person -> person.equals(driver));
+        destinationTerminal.getDrivers().removeIf(person -> person.equals(driver));
         originTerminal.getDrivers().add(driver);
 
-        sourceTerminal.getVehicles().removeIf(thatVehicle -> thatVehicle.equals(vehicle));
+        destinationTerminal.getVehicles().removeIf(thatVehicle -> thatVehicle.equals(vehicle));
         originTerminal.getVehicles().add(vehicle);
 
+        City destinationCity = null;
+        try {
+            destinationCity = Country.getCityByName(newTravel.getDestinationTerminal().getCityName());
+        } catch (CityDoesNotExistsException ignored) {
+        }
 
+        // Removing travelers from origin city and adding them to the destination city
+        for (Person traveler : newTravel.getTravelers()) {
+            try {
+                City travelerOriginCity = Country.getCityByName(traveler.getCityName());
+                travelerOriginCity.getCitizens().remove(traveler);
+
+                assert destinationCity != null;
+                destinationCity.getCitizens().add(traveler);
+
+            } catch (CityDoesNotExistsException ignored) {
+            }
+        }
+
+        // Removing driver from origin city and adding them to the destination city
+        try {
+            City driverOriginCity = Country.getCityByName(driver.getCityName());
+            driverOriginCity.getCitizens().remove(driver);
+            assert destinationCity != null;
+            destinationCity.getCitizens().add(driver);
+        } catch (CityDoesNotExistsException ignored) {
+        }
+
+        return newTravel;
     }
 
     @Override
     public ArrayList<Travel> sortTravels() {
-        return Collections.sort(travels);
+        ArrayList<Travel> travelsDuplicate = new ArrayList<>(travels);
+        Collections.sort(travelsDuplicate);
+        return travelsDuplicate;
     }
 
     @Override
@@ -110,8 +147,22 @@ abstract public class Terminal implements Safarable {
     }
 
     @Override
-    public ArrayList<Travel> getTravelHistory() {
-        return null;
+    public ArrayList<Travel> getTravelHistory(String travelType) {
+        ArrayList<Travel> history = new ArrayList<>();
+        switch (travelType) {
+            case IN_GOING -> {
+                for (Travel travel : travels)
+                    if (travel.getDestinationTerminal().equals(this))
+                        history.add(travel);
+            }
+            case OUT_GOING -> {
+                for (Travel travel : travels)
+                    if (travel.getOriginTerminal().equals(this))
+                        history.add(travel);
+            }
+            case BOTH_OUT_IN_GOING -> history.addAll(travels);
+        }
+        return history;
     }
 
     public void addNewTravel() {

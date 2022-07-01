@@ -1,5 +1,7 @@
 package main;
 
+import main.exceptions.CityDoesNotExistsException;
+
 import java.util.ArrayList;
 
 public class Country {
@@ -36,5 +38,13 @@ public class Country {
     public void addCity(City city){
       cities.add(city);
       population += city.getPopulation();
+    }
+
+    public static City getCityByName(String cityName) throws CityDoesNotExistsException {
+        for (City city : cities)
+            if (city.getName().equals(cityName))
+                return city;
+
+        throw new CityDoesNotExistsException("No city found with name: " + cityName);
     }
 }

@@ -14,5 +14,5 @@ public interface Safarable {
 
     int calculateTravelCost(ArrayList<Person> travelers, Vehicle vehicle);
 
-    ArrayList<Travel> getTravelHistory();
+    ArrayList<Travel> getTravelHistory(String travelType);
 }
