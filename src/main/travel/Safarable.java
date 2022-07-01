@@ -1,4 +1,4 @@
-package main.Travel;
+package main.travel;
 
 import main.Person;
 import main.buildings.Terminal;

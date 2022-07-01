@@ -3,8 +3,8 @@ package main.buildings;
 import main.City;
 import main.Country;
 import main.Person;
-import main.Travel.Safarable;
-import main.Travel.Travel;
+import main.travel.Safarable;
+import main.travel.Travel;
 import main.exceptions.CityDoesNotExistsException;
 import main.vehicles.Vehicle;
 

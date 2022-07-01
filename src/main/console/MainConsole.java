@@ -1,7 +1,6 @@
-package main.Console;
+package main.console;
 
 import main.City;
-import main.Person;
 import main.buildings.*;
 import main.vehicles.*;
 

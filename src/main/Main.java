@@ -1,6 +1,6 @@
 package main;
 
-import main.Console.MainConsole;
+import main.console.MainConsole;
 
 import java.util.ArrayList;
 
