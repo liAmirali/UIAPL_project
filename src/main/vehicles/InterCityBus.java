@@ -4,8 +4,8 @@ public class InterCityBus extends LandVehicle {
     private final int age;
     private final int maximumSpeed;
 
-    public InterCityBus(int priceToBuy, int capacity, String id, String manufacturer, int wheelCount, int wheelSize, int age, int maximumSpeed) {
-        super(priceToBuy, capacity, id, manufacturer, wheelCount, wheelSize);
+    public InterCityBus(int priceToBuy, int capacity, int id, String manufacturer, int age, int maximumSpeed) {
+        super(priceToBuy, capacity, id, manufacturer);
         this.age = age;
         this.maximumSpeed = maximumSpeed;
     }

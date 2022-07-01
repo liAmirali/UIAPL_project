@@ -7,7 +7,7 @@ public class Ship extends SeaVehicle {
         LIFEBOATS, SURVIVAL_SUITS,
     }
 
-    public Ship(int priceToBuy, int capacity, String id, String manufacturer, String fuelType, int minDepth, String type, int length) {
+    public Ship(int priceToBuy, int capacity, int id, String manufacturer, String fuelType, int minDepth, String type, int length) {
         super(priceToBuy, capacity, id, manufacturer, fuelType, minDepth);
         this.type = type;
         this.length = length;

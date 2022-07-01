@@ -27,4 +27,9 @@ public class ShippingPort extends Terminal {
     public void setWharfCount(int wharfCount) {
         this.wharfCount = wharfCount;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", seaVehicles=" + seaVehicles + ", wharfCount=" + wharfCount;
+    }
 }

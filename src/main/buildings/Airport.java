@@ -5,7 +5,6 @@ import main.vehicles.AirVehicle;
 import java.util.ArrayList;
 
 public class Airport extends Terminal {
-    final private ArrayList<AirVehicle> airVehicles;
     private int runwayCount;
     final private boolean isInternational;
 
@@ -14,12 +13,6 @@ public class Airport extends Terminal {
         super(costToBuild, cityName, name, address, area);
         this.runwayCount = runwayCount;
         this.isInternational = isInternational;
-        this.airVehicles = new ArrayList<>();
-    }
-
-    // Getters
-    public ArrayList<AirVehicle> getAirVehicles() {
-        return airVehicles;
     }
 
     public int getRunwayCount() {
@@ -37,5 +30,10 @@ public class Airport extends Terminal {
             return;
         }
         this.runwayCount = runwayCount;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", runwayCount=" + runwayCount + ", isInternational=" + isInternational;
     }
 }

@@ -47,4 +47,15 @@ public class Person {
     public int getSalary() {
         return salary;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name +
+                ", Last Name: " + lastname +
+                ", Birthday Year: " + birthdayYear +
+                ", City: " + city +
+                ", Job: " + job +
+                ", Gender: " + gender +
+                ", Salary:" + salary;
+    }
 }

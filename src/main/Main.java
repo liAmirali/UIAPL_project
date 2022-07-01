@@ -11,6 +11,8 @@ public class Main {
 
         MainConsole console0 = new MainConsole(cities.get(0));
 
-        console0.showMainMenu();
+        while (true) {
+            console0.showMainMenu();
+        }
     }
 }

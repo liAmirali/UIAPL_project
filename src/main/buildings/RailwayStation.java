@@ -27,4 +27,9 @@ public class RailwayStation extends Terminal {
     public int getOutputRailCount() {
         return outputRailCount;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", trains=" + trains + ", inputRailCount=" + inputRailCount + ", outputRailCount=" + outputRailCount;
+    }
 }

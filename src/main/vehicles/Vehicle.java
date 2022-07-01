@@ -3,10 +3,10 @@ package main.vehicles;
 abstract public class Vehicle {
     private final int priceToBuy;
     private final int capacity;
-    private final String id;
+    private final int id;
     private final String manufacturer;
 
-    public Vehicle(int priceToBuy, int capacity, String id, String manufacturer) {
+    public Vehicle(int priceToBuy, int capacity, int id, String manufacturer) {
         this.priceToBuy = priceToBuy;
         this.capacity = capacity;
         this.id = id;
@@ -22,11 +22,19 @@ abstract public class Vehicle {
         return capacity;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     public String getManufacturer() {
         return manufacturer;
+    }
+
+    @Override
+    public String toString() {
+        return "priceToBuy=" + priceToBuy +
+                ", capacity=" + capacity +
+                ", id=" + id +
+                ", manufacturer='" + manufacturer + '\'';
     }
 }

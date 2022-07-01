@@ -54,4 +54,14 @@ public class Hotel {
     public void setStarCount(int starCount) {
         this.starCount = starCount;
     }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", costToBuild=" + costToBuild +
+                ", address='" + address + '\'' +
+                ", starCount=" + starCount +
+                ", roomCount=" + roomCount +
+                ", rooms=" + rooms;
+    }
 }

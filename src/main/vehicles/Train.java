@@ -8,7 +8,7 @@ public class Train extends LandVehicle {
         VENDING_MACHINE,
     }
 
-    public Train(int priceToBuy, int capacity, String id, String manufacturer, int wheelCount, int wheelSize) {
-        super(priceToBuy, capacity, id, manufacturer, wheelCount, wheelSize);
+    public Train(int priceToBuy, int capacity, int id, String manufacturer) {
+        super(priceToBuy, capacity, id, manufacturer);
     }
 }
