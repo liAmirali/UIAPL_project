@@ -5,14 +5,19 @@ import main.exceptions.CityDoesNotExistsException;
 import java.util.ArrayList;
 
 public class Country {
-    private final ArrayList<City> cities;
-    private int population;
-    private int totalBudget;
+    private static Country instance = null;
+    private static final ArrayList<City> cities = new ArrayList<>();
 
-    public Country(int population, int totalBudget) {
-        this.cities = new ArrayList<>();
-        this.population = population;
-        this.totalBudget = totalBudget;
+    private int population = 0;
+    private int totalBudget = 0;
+
+    private Country() {
+    }
+
+    public static Country getInstance() {
+        if (instance == null)
+            instance = new Country();
+        return instance;
     }
 
     public ArrayList<City> getCities() {
@@ -35,9 +40,10 @@ public class Country {
         this.totalBudget = totalBudget;
     }
 
-    public void addCity(City city){
-      cities.add(city);
-      population += city.getPopulation();
+    public void addCity(City city) {
+        cities.add(city);
+        population += city.getPopulation();
+        totalBudget += city.getBudget();
     }
 
     public static City getCityByName(String cityName) throws CityDoesNotExistsException {

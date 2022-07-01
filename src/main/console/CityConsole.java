@@ -15,30 +15,30 @@ public class CityConsole {
     }
 
     public void showMainMenu() {
-        System.out.println("[1] Build a terminal.");
-        System.out.println("[2] Buy vehicles.");
-        System.out.println("[3] Hire drivers");
-        System.out.println("[4] Get terminal details");
-        System.out.println("[5] Build a hotel");
-        System.out.println("[6] Build rooms for an existing hotel");
-        System.out.println("[7] Get hotels details ");
+        System.out.println("[0] Build a terminal.");
+        System.out.println("[1] Buy vehicles.");
+        System.out.println("[2] Hire drivers");
+        System.out.println("[3] Get terminal details");
+        System.out.println("[4] Build a hotel");
+        System.out.println("[5] Build rooms for an existing hotel");
+        System.out.println("[6] Get hotels details ");
 
         Scanner input = new Scanner(System.in);
         System.out.print("Enter menu code: ");
         String menuCode = input.nextLine();
 
         switch (menuCode) {
-            case "1" -> showTerminalBuilding();
-            case "2" -> showCarPurchasePage();
-            case "3" -> showHireADriverPage();
-            case "4" -> {
+            case "0" -> showTerminalBuilding();
+            case "1" -> showCarPurchasePage();
+            case "2" -> showHireADriverPage();
+            case "3" -> {
                 for (Terminal terminal : city.getTerminals()) {
                     System.out.println(terminal);
                 }
             }
-            case "5" -> showHotelAdd();
-            case "6" -> showHotelRoomAdd();
-            case "7" -> {
+            case "4" -> showHotelAdd();
+            case "5" -> showHotelRoomAdd();
+            case "6" -> {
                 for (Hotel hotel : city.getHotels()) {
                     System.out.println(hotel);
                 }
@@ -48,48 +48,48 @@ public class CityConsole {
     }
 
     public void showTerminalBuilding() {
-        System.out.println("[1] Build an airport");
-        System.out.println("[2] Build a railway station");
-        System.out.println("[3] Build a bus terminal");
-        System.out.println("[4] Build a shipping port");
+        System.out.println("[0] Build an airport");
+        System.out.println("[1] Build a railway station");
+        System.out.println("[2] Build a bus terminal");
+        System.out.println("[3] Build a shipping port");
 
         Scanner input = new Scanner(System.in);
         System.out.print("Enter menu code: ");
         String menuCode = input.nextLine();
 
         switch (menuCode) {
-            case "1" -> showAirportBuildPage();
-            case "2" -> showRailwayStationBuildPage();
-            case "3" -> showBusTerminalBuildPage();
-            case "4" -> showShippingPortBuildPage();
+            case "0" -> showAirportBuildPage();
+            case "1" -> showRailwayStationBuildPage();
+            case "2" -> showBusTerminalBuildPage();
+            case "3" -> showShippingPortBuildPage();
             default -> System.out.println("Invalid menu code number!");
         }
     }
 
     public void showCarPurchasePage() {
         System.out.println("--- Air Vehicles ---");
-        System.out.println("[1] Airliner");
-        System.out.println("[2] Cargo Plane");
+        System.out.println("[0] Airliner");
+        System.out.println("[1] Cargo Plane");
 
         System.out.println("--- Land Vehicles ---");
-        System.out.println("[3] Train");
-        System.out.println("[4] Inter-city Bus");
+        System.out.println("[2] Train");
+        System.out.println("[3] Inter-city Bus");
 
         System.out.println("--- Sea Vehicles ---");
-        System.out.println("[5] Ship");
-        System.out.println("[6] Boat");
+        System.out.println("[4] Ship");
+        System.out.println("[5] Boat");
 
         Scanner input = new Scanner(System.in);
         System.out.print("Enter menu code: ");
         String menuCode = input.nextLine();
 
         switch (menuCode) {
-            case "1" -> showAirlinerPurchase();
-            case "2" -> showCargoPlanePurchase();
-            case "3" -> showTrainPurchase();
-            case "4" -> showBusPurchase();
-            case "5" -> showShipPurchase();
-            case "6" -> showBoatPurchase();
+            case "0" -> showAirlinerPurchase();
+            case "1" -> showCargoPlanePurchase();
+            case "2" -> showTrainPurchase();
+            case "3" -> showBusPurchase();
+            case "4" -> showShipPurchase();
+            case "5" -> showBoatPurchase();
             default -> System.out.println("Invalid menu code number!");
         }
     }

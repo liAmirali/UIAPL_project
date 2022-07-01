@@ -1,18 +1,21 @@
 package main;
 
-import main.console.CityConsole;
-
-import java.util.ArrayList;
-
 public class Main {
-    public static void main(String[] args) {
-        ArrayList<City> cities = new ArrayList<>();
-        cities.add(new City("Tehran", 100, 10000));
+    private static City selectedCity = null;
 
-        CityConsole console0 = new CityConsole(cities.get(0));
+    public static void main(String[] args) {
+
 
         while (true) {
-            console0.showMainMenu();
+
         }
+    }
+
+    public static City getSelectedCity() {
+        return selectedCity;
+    }
+
+    public static void setSelectedCity(City newSelectedCity) {
+        selectedCity = newSelectedCity;
     }
 }
