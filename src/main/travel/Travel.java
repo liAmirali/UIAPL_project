@@ -45,6 +45,10 @@ public class Travel implements Comparable<Travel> {
         return destinationTerminal;
     }
 
+    public void setDestinationTerminal(Terminal destinationTerminal) {
+        this.destinationTerminal = destinationTerminal;
+    }
+
     public ArrayList<Person> getTravelers() {
         return travelers;
     }

@@ -7,10 +7,10 @@ import main.vehicles.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MainConsole {
-    City city;
+public class CityConsole {
+    final City city;
 
-    public MainConsole(City city) {
+    public CityConsole(City city) {
         this.city = city;
     }
 
@@ -57,16 +57,12 @@ public class MainConsole {
         System.out.print("Enter menu code: ");
         String menuCode = input.nextLine();
 
-        if (menuCode.equals("1")) {
-            showAirportBuildPage();
-        } else if (menuCode.equals("2")) {
-            showRailwayStationBuildPage();
-        } else if (menuCode.equals("3")) {
-            showBusTerminalBuildPage();
-        } else if (menuCode.equals("4")) {
-            showShippingPortBuildPage();
-        } else {
-            System.out.println("Invalid menu code number!");
+        switch (menuCode) {
+            case "1" -> showAirportBuildPage();
+            case "2" -> showRailwayStationBuildPage();
+            case "3" -> showBusTerminalBuildPage();
+            case "4" -> showShippingPortBuildPage();
+            default -> System.out.println("Invalid menu code number!");
         }
     }
 
@@ -87,26 +83,20 @@ public class MainConsole {
         System.out.print("Enter menu code: ");
         String menuCode = input.nextLine();
 
-        if (menuCode.equals("1")) {
-            showAirlinerPurchase();
-        } else if (menuCode.equals("2")) {
-            showCargoPlanePurchase();
-        } else if (menuCode.equals("3")) {
-            showTrainPurchase();
-        } else if (menuCode.equals("4")) {
-            showBusPurchase();
-        } else if (menuCode.equals("5")) {
-            showShipPurchase();
-        } else if (menuCode.equals("6")) {
-            showBoatPurchase();
-        } else {
-            System.out.println("Invalid menu code number!");
+        switch (menuCode) {
+            case "1" -> showAirlinerPurchase();
+            case "2" -> showCargoPlanePurchase();
+            case "3" -> showTrainPurchase();
+            case "4" -> showBusPurchase();
+            case "5" -> showShipPurchase();
+            case "6" -> showBoatPurchase();
+            default -> System.out.println("Invalid menu code number!");
         }
     }
 
     public void showHireADriverPage() {
         System.out.println();
-        cityTerminals.get(terminalID).getDrivers().add(newPerson);
+//        cityTerminals.get(terminalID).getDrivers().add(newPerson);
 
         System.out.println("Successfully added!");
     }
@@ -173,7 +163,7 @@ public class MainConsole {
         manufacturer = input.nextLine();
 
         Airliner newAirliner = new Airliner(priceToBuy, capacity, id, manufacturer, maxFlightAltitude, bandwidth, staffCount);
-        selectedAirport.getAirVehicles().add(newAirliner);
+        selectedAirport.getVehicles().add(newAirliner);
 
         System.out.println("Successfully added!");
     }
@@ -239,7 +229,7 @@ public class MainConsole {
         manufacturer = input.nextLine();
 
         CargoPlane newCargoPlane = new CargoPlane(priceToBuy, capacity, id, manufacturer, maxFlightAltitude, bandwidth, maxAcceptableWeight);
-        selectedAirport.getAirVehicles().add(newCargoPlane);
+        selectedAirport.getVehicles().add(newCargoPlane);
 
         System.out.println("Successfully added!");
     }
@@ -351,7 +341,7 @@ public class MainConsole {
         manufacturer = input.nextLine();
 
         InterCityBus newInterCityBus = new InterCityBus(priceToBuy, capacity, id, manufacturer, age, maximumSpeed);
-        selectedBusTerminal.getBuses().add(newInterCityBus);
+        selectedBusTerminal.getVehicles().add(newInterCityBus);
 
         System.out.println("Successfully added!");
     }
