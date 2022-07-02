@@ -92,4 +92,18 @@ public class Travel implements Comparable<Travel> {
 
         return this.cost - travel.getCost();
     }
+
+    @Override
+    public String toString() {
+        return "Travel{" +
+                "ID=" + ID +
+                ", originTerminal=" + originTerminal +
+                ", destinationTerminal=" + destinationTerminal +
+                ", travelers=" + travelers +
+                ", driver=" + driver +
+                ", vehicle=" + vehicle +
+                ", dateTime=" + dateTime +
+                ", cost=" + cost +
+                '}';
+    }
 }

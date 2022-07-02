@@ -3,10 +3,10 @@ package main.buildings;
 import main.City;
 import main.Country;
 import main.Person;
+import main.exceptions.CityDoesNotExistsException;
 import main.travel.Safarable;
 import main.travel.Travel;
-import main.exceptions.CityDoesNotExistsException;
-import main.vehicles.Vehicle;
+import main.vehicles.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -143,7 +143,13 @@ abstract public class Terminal implements Safarable {
 
     @Override
     public int calculateTravelCost(ArrayList<Person> travelers, Vehicle vehicle) {
-        return 0;
+        int ticketPricePerPerson = 1;
+        if (vehicle instanceof Airliner) ticketPricePerPerson = 100;
+        else if (vehicle instanceof InterCityBus) ticketPricePerPerson = 20;
+        else if (vehicle instanceof Ship) ticketPricePerPerson = 100;
+        else if (vehicle instanceof Train) ticketPricePerPerson = 50;
+
+        return travelers.size() * ticketPricePerPerson;
     }
 
     @Override

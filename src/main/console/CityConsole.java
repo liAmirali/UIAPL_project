@@ -1,9 +1,14 @@
 package main.console;
 
 import main.City;
+import main.Country;
+import main.Person;
 import main.buildings.*;
+import main.exceptions.*;
+import main.travel.Travel;
 import main.vehicles.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,14 +23,15 @@ public class CityConsole {
         return city;
     }
 
-    public void showMainMenu() {
-        System.out.println("[0] Build a terminal.");
-        System.out.println("[1] Buy vehicles.");
+    public void showMainMenu() throws IncompatibleTerminalsException, VehicleDoesNotExistException, InvalidInputException, NotEnoughTravelersException, TerminalDoesNotExistException, CityDoesNotExistsException {
+        System.out.println("[0] Build a terminal");
+        System.out.println("[1] Buy vehicles");
         System.out.println("[2] Hire drivers");
         System.out.println("[3] Get terminal details");
         System.out.println("[4] Build a hotel");
         System.out.println("[5] Build rooms for an existing hotel");
-        System.out.println("[6] Get hotels details ");
+        System.out.println("[6] Get hotels details");
+        System.out.println("[7] Create new trip");
 
         Scanner input = new Scanner(System.in);
         System.out.print("Enter menu code: ");
@@ -47,6 +53,7 @@ public class CityConsole {
                     System.out.println(hotel);
                 }
             }
+            case "7" -> showCreateNewTripMenu();
             default -> System.out.println("Invalid menu code number!");
         }
     }
@@ -103,6 +110,154 @@ public class CityConsole {
 //        cityTerminals.get(terminalID).getDrivers().add(newPerson);
 
         System.out.println("Successfully added!");
+    }
+
+    public void showCreateNewTripMenu() throws InvalidInputException, CityDoesNotExistsException, InvalidTravelException, NotEnoughTravelersException, DriverDoesNotExistsException {
+        ArrayList<Person> citizens = city.getCitizens();
+        ArrayList<Person> travelers = new ArrayList<>();
+        ArrayList<Terminal> terminals = city.getTerminals();
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("## Creating a New Trip ###");
+
+        System.out.println("Citizens: ");
+        for (int i = 0; i < citizens.size(); i++)
+            if (citizens.get(i).isEmployed())
+                System.out.println(i + ") " + citizens.get(i));
+
+        String enteredPersonID;
+        while (true) {
+            System.out.print("Enter person ID to add to the trip (Enter NEXT to go to the next step): ");
+            enteredPersonID = input.nextLine();
+
+            if (enteredPersonID.equals("NEXT")) break;
+
+            try {
+                if (Integer.parseInt(enteredPersonID) < 0 || Integer.parseInt(enteredPersonID) >= citizens.size())
+                    throw new PersonIDDoesNotExistException("No Person exists with the entered ID.");
+            } catch (NumberFormatException e) {
+                throw new PersonIDDoesNotExistException("Entered person ID is invalid.");
+            }
+
+            travelers.add(citizens.get(Integer.parseInt(enteredPersonID)));
+        }
+
+        System.out.print("Enter destination city name: ");
+        String enteredDestinationCityName = input.nextLine();
+
+        City destinationCity = Country.getCityByName(enteredDestinationCityName);
+
+        System.out.println("Origin city terminals: ");
+        for (int i = 0; i < terminals.size(); i++)
+            System.out.println(i + ") " + terminals.get(i));
+
+
+        System.out.println("Destination city terminals: ");
+        for (int i = 0; i < destinationCity.getTerminals().size(); i++)
+            System.out.println(i + ") " + destinationCity.getTerminals().get(i));
+
+
+        System.out.print("Enter origin terminal ID: ");
+        int originTerminalID;
+        try {
+            originTerminalID = input.nextInt();
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("Invalid input.");
+        }
+
+        if (originTerminalID < 0 || originTerminalID >= terminals.size())
+            throw new TerminalDoesNotExistException("This terminal ID does not exists: " + originTerminalID);
+
+        Terminal originTerminal = terminals.get(originTerminalID);
+
+        System.out.print("Enter destination terminal ID: ");
+        int destinationTerminalID;
+        try {
+            destinationTerminalID = input.nextInt();
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("Invalid input.");
+        }
+
+        if (destinationTerminalID < 0 || destinationTerminalID >= destinationCity.getTerminals().size())
+            throw new TerminalDoesNotExistException("This terminal ID does not exists: " + destinationTerminalID);
+
+        Terminal destinationTerminal = destinationCity.getTerminals().get(destinationTerminalID);
+
+        // Checking if two terminals are of the same type
+        if (!originTerminal.getClass().equals(destinationTerminal.getClass())) {
+            throw new IncompatibleTerminalsException("Two terminals in a single trip has to be of the same type.");
+        }
+
+        System.out.println("Origin Terminal Vehicles: ");
+        ArrayList<Vehicle> originTerminalVehicles = originTerminal.getVehicles();
+
+        for (int i = 0; i < originTerminalVehicles.size(); i++)
+            System.out.println(i + ") " + originTerminalVehicles.get(i));
+
+        System.out.print("Enter vehicle ID: ");
+        int enteredVehicleID;
+        try {
+            enteredVehicleID = input.nextInt();
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("Vehicle ID is invalid.");
+        }
+
+        if (enteredVehicleID < 0 || enteredVehicleID >= originTerminalVehicles.size())
+            throw new VehicleDoesNotExistException("No vehicle found with this ID: " + enteredVehicleID);
+
+        Vehicle selectedVehicle = originTerminalVehicles.get(enteredVehicleID);
+
+        System.out.println("Drivers: ");
+        int driverID = 0;
+        if (selectedVehicle instanceof Ship) {
+            for (Person driver : originTerminal.getDrivers()) {
+                if (driver.getJob().equals(Person.SAILOR))
+                    System.out.println(driverID + ") " + driver);
+                driverID++;
+            }
+        } else if (selectedVehicle instanceof Train) {
+            for (Person driver : originTerminal.getDrivers()) {
+                if (driver.getJob().equals(Person.TRAIN_DRIVER))
+                    System.out.println(driverID + ") " + driver);
+                driverID++;
+            }
+        } else if (selectedVehicle instanceof InterCityBus) {
+            for (Person driver : originTerminal.getDrivers()) {
+                if (driver.getJob().equals(Person.BUS_DRIVER))
+                    System.out.println(driverID + ") " + driver);
+                driverID++;
+            }
+        } else if (selectedVehicle instanceof Airliner) {
+            for (Person driver : originTerminal.getDrivers()) {
+                if (driver.getJob().equals(Person.PILOT))
+                    System.out.println(driverID + ") " + driver);
+                driverID++;
+            }
+        } else throw new InvalidTravelException("Selected vehicle is of invalid type.");
+
+        System.out.print("Enter driver ID: ");
+        int enteredDriverID;
+        try {
+            enteredDriverID = input.nextInt();
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("Invalid driver ID.");
+        }
+
+        if (enteredDriverID < 0 || enteredDriverID > originTerminal.getDrivers().size())
+            throw new DriverDoesNotExistsException("No driver found with ID: " + enteredDriverID);
+
+        Person selectedDriver = originTerminal.getDrivers().get(enteredDriverID);
+
+        if (travelers.size() < selectedVehicle.getCapacity() / 2)
+            throw new NotEnoughTravelersException("Not enough travelers. It has to be at least more than " + selectedVehicle.getCapacity() / 2);
+
+
+        int travelCost = originTerminal.calculateTravelCost(travelers, selectedVehicle);
+
+        Travel travel = originTerminal.createNewTravel(originTerminal, destinationTerminal, selectedDriver, selectedVehicle, LocalDateTime.now(), travelCost);
+        System.out.println("Travel created successfully.");
+        System.out.println(travel);
     }
 
     // VEHICLE PURCHASE
