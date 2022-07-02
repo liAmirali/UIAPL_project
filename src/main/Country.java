@@ -8,8 +8,6 @@ public class Country {
     private static Country instance = null;
     private static final ArrayList<City> cities = new ArrayList<>();
 
-    private int population = 0;
-    private int totalBudget = 0;
 
     private Country() {
     }
@@ -25,25 +23,19 @@ public class Country {
     }
 
     public int getPopulation() {
+        int population = 0;
+        for (City city : cities) population += city.getPopulation();
         return population;
     }
 
-    public void setPopulation(int population) {
-        this.population = population;
-    }
-
     public int getTotalBudget() {
-        return totalBudget;
-    }
-
-    public void setTotalBudget(int totalBudget) {
-        this.totalBudget = totalBudget;
+        int budget = 0;
+        for (City city : cities) budget += city.getBudget();
+        return budget;
     }
 
     public void addCity(City city) {
         cities.add(city);
-        population += city.getPopulation();
-        totalBudget += city.getBudget();
     }
 
     public static City getCityByName(String cityName) throws CityDoesNotExistsException {

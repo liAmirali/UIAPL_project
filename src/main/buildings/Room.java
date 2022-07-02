@@ -4,13 +4,13 @@ public class Room {
     private final String roomNum;
     private final int bedCount;
     private final int area;
-    private final int accommodationPrice;
+    private final int inhabitancyPrice;
 
-    public Room(String roomNum, int bedCount, int area, int accommodationPrice) {
+    public Room(String roomNum, int bedCount, int area, int inhabitancyPrice) {
         this.roomNum = roomNum;
         this.bedCount = bedCount;
         this.area = area;
-        this.accommodationPrice = accommodationPrice;
+        this.inhabitancyPrice = inhabitancyPrice;
     }
 
     public String getRoomNum() {
@@ -25,7 +25,7 @@ public class Room {
         return area;
     }
 
-    public int getAccommodationPrice() {
-        return accommodationPrice;
+    public int getInhabitancyPrice() {
+        return inhabitancyPrice;
     }
 }

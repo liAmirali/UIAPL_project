@@ -8,7 +8,6 @@ public class Hotel {
     private final String address;
     private int starCount;
     private final int roomCount;
-
     private final ArrayList<Room> rooms;
 
     enum Facilities {

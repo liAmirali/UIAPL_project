@@ -50,12 +50,14 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Name: " + name +
-                ", Last Name: " + lastname +
-                ", Birthday Year: " + birthdayYear +
-                ", City: " + cityName +
-                ", Job: " + job +
-                ", Gender: " + gender +
-                ", Salary:" + salary;
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", birthdayYear=" + birthdayYear +
+                ", cityName='" + cityName + '\'' +
+                ", job='" + job + '\'' +
+                ", gender=" + gender +
+                ", salary=" + salary +
+                '}';
     }
 }

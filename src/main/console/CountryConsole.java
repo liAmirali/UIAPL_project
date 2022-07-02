@@ -22,21 +22,23 @@ public class CountryConsole {
         System.out.println("[1] Enter a City");
         System.out.println("[2] Show City Details");
 
+        System.out.print("Enter menu code: ");
         String menuCode = input.nextLine();
 
         switch (menuCode) {
-            case "0" -> showCreateNewCityMenu();
-            case "1" -> showEnterCityMenu();
+            case "0" -> showCreateNewCityPage();
+            case "1" -> showEnterCityPage();
+            case "2" -> showCityDetailsPage();
         }
     }
 
-    public void showCreateNewCityMenu() {
+    public void showCreateNewCityPage() {
         Scanner input = new Scanner(System.in);
 
         String cityName = "";
         while (true) {
             try {
-                System.out.println("Enter city name: ");
+                System.out.print("Enter city name: ");
                 cityName = input.nextLine();
 
                 // It raises a city does not exist if it's a unique name
@@ -51,7 +53,7 @@ public class CountryConsole {
         int initialBudget;
         while (true) {
             try {
-                System.out.println("Enter city budget: ");
+                System.out.print("Enter city budget: ");
                 initialBudget = input.nextInt();
                 input.nextLine();
 
@@ -69,7 +71,7 @@ public class CountryConsole {
         int maxPopulation;
         while (true) {
             try {
-                System.out.println("Enter city max population: ");
+                System.out.print("Enter city max population: ");
                 maxPopulation = input.nextInt();
                 input.nextLine();
 
@@ -89,14 +91,14 @@ public class CountryConsole {
         System.out.println("City successfully created.");
     }
 
-    public void showEnterCityMenu() {
+    public void showEnterCityPage() {
         Scanner input = new Scanner(System.in);
 
         String cityName;
         City city;
         while (true) {
             try {
-                System.out.println("Enter city name: ");
+                System.out.print("Enter city name: ");
                 cityName = input.nextLine();
 
                 city = Country.getCityByName(cityName);
@@ -110,5 +112,38 @@ public class CountryConsole {
         Main.setSelectedCity(city);
 
         System.out.println("City selected successfully.");
+    }
+
+    public void showCityDetailsPage() {
+        Scanner input = new Scanner(System.in);
+
+        String cityName;
+        City selectedCity = null;
+
+        boolean shouldShowAll = false;
+
+        while (true) {
+            try {
+                System.out.print("Enter city name (hint: enter nothing to show all): ");
+                cityName = input.nextLine();
+
+                if (cityName.isEmpty()) {
+                    shouldShowAll = true;
+                    break;
+                }
+
+                selectedCity = Country.getCityByName(cityName);
+
+                break;
+            } catch (CityDoesNotExistsException e) {
+                System.out.println("This city does not exist.");
+            }
+        }
+
+        if (shouldShowAll)
+            for (City city : country.getCities())
+                System.out.println(city);
+        else
+            System.out.println(selectedCity);
     }
 }

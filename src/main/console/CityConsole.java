@@ -8,10 +8,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CityConsole {
-    final City city;
+    private final City city;
 
     public CityConsole(City city) {
         this.city = city;
+    }
+
+    public City getCity() {
+        return city;
     }
 
     public void showMainMenu() {
@@ -130,19 +134,19 @@ public class CityConsole {
         int id;
         String manufacturer;
 
-        System.out.println("Staff count: ");
+        System.out.print("Staff count: ");
         staffCount = input.nextInt();
         input.nextLine();
 
-        System.out.println("Max flight altitude: ");
+        System.out.print("Max flight altitude: ");
         maxFlightAltitude = input.nextInt();
         input.nextLine();
 
-        System.out.println("Bandwidth: ");
+        System.out.print("Bandwidth: ");
         bandwidth = input.nextInt();
         input.nextLine();
 
-        System.out.println("Price to buy: ");
+        System.out.print("Price to buy: ");
         priceToBuy = input.nextInt();
         input.nextLine();
 
@@ -153,13 +157,13 @@ public class CityConsole {
             city.setBudget(city.getBudget() - priceToBuy);
         }
 
-        System.out.println("Capacity: ");
+        System.out.print("Capacity: ");
         capacity = input.nextInt();
         input.nextLine();
 
         id = selectedAirport.getVehicleCount();
 
-        System.out.println("Manufacturer: ");
+        System.out.print("Manufacturer: ");
         manufacturer = input.nextLine();
 
         Airliner newAirliner = new Airliner(priceToBuy, capacity, id, manufacturer, maxFlightAltitude, bandwidth, staffCount);
@@ -196,19 +200,19 @@ public class CityConsole {
         int id;
         String manufacturer;
 
-        System.out.println("Max Acceptable Weight: ");
+        System.out.print("Max Acceptable Weight: ");
         maxAcceptableWeight = input.nextInt();
         input.nextLine();
 
-        System.out.println("Max flight altitude: ");
+        System.out.print("Max flight altitude: ");
         maxFlightAltitude = input.nextInt();
         input.nextLine();
 
-        System.out.println("Bandwidth: ");
+        System.out.print("Bandwidth: ");
         bandwidth = input.nextInt();
         input.nextLine();
 
-        System.out.println("Price to buy: ");
+        System.out.print("Price to buy: ");
         priceToBuy = input.nextInt();
         input.nextLine();
 
@@ -219,13 +223,13 @@ public class CityConsole {
             city.setBudget(city.getBudget() - priceToBuy);
         }
 
-        System.out.println("Capacity: ");
+        System.out.print("Capacity: ");
         capacity = input.nextInt();
         input.nextLine();
 
         id = selectedAirport.getVehicleCount();
 
-        System.out.println("Manufacturer: ");
+        System.out.print("Manufacturer: ");
         manufacturer = input.nextLine();
 
         CargoPlane newCargoPlane = new CargoPlane(priceToBuy, capacity, id, manufacturer, maxFlightAltitude, bandwidth, maxAcceptableWeight);
@@ -259,7 +263,7 @@ public class CityConsole {
         int id;
         String manufacturer;
 
-        System.out.println("Price to buy: ");
+        System.out.print("Price to buy: ");
         priceToBuy = input.nextInt();
         input.nextLine();
 
@@ -270,13 +274,13 @@ public class CityConsole {
             city.setBudget(city.getBudget() - priceToBuy);
         }
 
-        System.out.println("Capacity: ");
+        System.out.print("Capacity: ");
         capacity = input.nextInt();
         input.nextLine();
 
         id = selectedRailwayStation.getVehicleCount();
 
-        System.out.println("Manufacturer: ");
+        System.out.print("Manufacturer: ");
         manufacturer = input.nextLine();
 
         Train newTrain = new Train(priceToBuy, capacity, id, manufacturer);
@@ -312,15 +316,15 @@ public class CityConsole {
         int id;
         String manufacturer;
 
-        System.out.println("Age: ");
+        System.out.print("Age: ");
         age = input.nextInt();
         input.nextLine();
 
-        System.out.println("Maximum Speed: ");
+        System.out.print("Maximum Speed: ");
         maximumSpeed = input.nextInt();
         input.nextLine();
 
-        System.out.println("Price to buy: ");
+        System.out.print("Price to buy: ");
         priceToBuy = input.nextInt();
         input.nextLine();
 
@@ -331,13 +335,13 @@ public class CityConsole {
             city.setBudget(city.getBudget() - priceToBuy);
         }
 
-        System.out.println("Capacity: ");
+        System.out.print("Capacity: ");
         capacity = input.nextInt();
         input.nextLine();
 
         id = selectedBusTerminal.getVehicleCount();
 
-        System.out.println("Manufacturer: ");
+        System.out.print("Manufacturer: ");
         manufacturer = input.nextLine();
 
         InterCityBus newInterCityBus = new InterCityBus(priceToBuy, capacity, id, manufacturer, age, maximumSpeed);
@@ -376,14 +380,14 @@ public class CityConsole {
         String manufacturer;
 
 
-        System.out.println("Fuel Type: ");
+        System.out.print("Fuel Type: ");
         fuelType = input.nextLine();
 
-        System.out.println("Min Depth: ");
+        System.out.print("Min Depth: ");
         minDepth = input.nextInt();
         input.nextLine();
 
-        System.out.println("Price to buy: ");
+        System.out.print("Price to buy: ");
         priceToBuy = input.nextInt();
         input.nextLine();
 
@@ -394,20 +398,20 @@ public class CityConsole {
             city.setBudget(city.getBudget() - priceToBuy);
         }
 
-        System.out.println("Capacity: ");
+        System.out.print("Capacity: ");
         capacity = input.nextInt();
         input.nextLine();
 
-        System.out.println("Type: ");
+        System.out.print("Type: ");
         type = input.nextLine();
 
-        System.out.println("Length: ");
+        System.out.print("Length: ");
         length = input.nextInt();
         input.nextLine();
 
         id = selectedShippingPort.getVehicleCount();
 
-        System.out.println("Manufacturer: ");
+        System.out.print("Manufacturer: ");
         manufacturer = input.nextLine();
 
         Ship newShip = new Ship(priceToBuy, capacity, id, manufacturer, fuelType, minDepth, type, length);
@@ -446,22 +450,22 @@ public class CityConsole {
         String manufacturer;
 
 
-        System.out.println("Fuel Type: ");
+        System.out.print("Fuel Type: ");
         fuelType = input.nextLine();
 
-        System.out.println("Min Depth: ");
+        System.out.print("Min Depth: ");
         minDepth = input.nextInt();
         input.nextLine();
 
-        System.out.println("Has motor (True/False): ");
+        System.out.print("Has motor (True/False): ");
         hasMotor = input.nextBoolean();
         input.nextLine();
 
-        System.out.println("Motor Power: ");
+        System.out.print("Motor Power: ");
         motorPower = input.nextInt();
         input.nextLine();
 
-        System.out.println("Price to buy: ");
+        System.out.print("Price to buy: ");
         priceToBuy = input.nextInt();
         input.nextLine();
 
@@ -472,13 +476,13 @@ public class CityConsole {
             city.setBudget(city.getBudget() - priceToBuy);
         }
 
-        System.out.println("Capacity: ");
+        System.out.print("Capacity: ");
         capacity = input.nextInt();
         input.nextLine();
 
         id = selectedShippingPort.getVehicleCount();
 
-        System.out.println("Manufacturer: ");
+        System.out.print("Manufacturer: ");
         manufacturer = input.nextLine();
 
         Boat newBoat = new Boat(priceToBuy, capacity, id, manufacturer, fuelType, minDepth, hasMotor, motorPower);
@@ -493,7 +497,6 @@ public class CityConsole {
 
         //terminal
         int costToBuild;
-        String cityName;
         String name;
         String address;
         int area;
@@ -503,7 +506,7 @@ public class CityConsole {
 
         String temp;
 
-        System.out.println("Cost to build: ");
+        System.out.print("Cost to build: ");
         costToBuild = input.nextInt();
         input.nextLine();
 
@@ -514,24 +517,21 @@ public class CityConsole {
             city.setBudget(city.getBudget() - costToBuild);
         }
 
-        System.out.println("city name: ");
-        cityName = input.nextLine();
-
-        System.out.println("Name: ");
+        System.out.print("Terminal Name: ");
         name = input.nextLine();
 
         System.out.println("Address: ");
         address = input.nextLine();
 
-        System.out.println("Area: ");
+        System.out.print("Area: ");
         area = input.nextInt();
         input.nextLine();
 
-        System.out.println("Runway count");
+        System.out.print("Runway count");
         runwayCount = input.nextInt();
         input.nextLine();
 
-        System.out.println("Is internation? (y/n) ");
+        System.out.print("Is internation? (y/n) ");
         temp = input.nextLine();
         if (temp.equals("y")) isInternational = true;
         else if (temp.equals("n")) isInternational = false;
@@ -541,7 +541,7 @@ public class CityConsole {
         }
 
 
-        Airport newAirport = new Airport(costToBuild, cityName, name, address, area, runwayCount, isInternational);
+        Airport newAirport = new Airport(costToBuild, city.getName(), name, address, area, runwayCount, isInternational);
         city.getTerminals().add(newAirport);
 
         System.out.println("The airport has been built successfully");
@@ -552,7 +552,6 @@ public class CityConsole {
 
         //terminal
         int costToBuild;
-        String cityName;
         String name;
         String address;
         int area;
@@ -562,7 +561,7 @@ public class CityConsole {
 
         String temp;
 
-        System.out.println("Cost to build: ");
+        System.out.print("Cost to build: ");
         costToBuild = input.nextInt();
         input.nextLine();
 
@@ -573,29 +572,26 @@ public class CityConsole {
             city.setBudget(city.getBudget() - costToBuild);
         }
 
-        System.out.println("city name: ");
-        cityName = input.nextLine();
-
-        System.out.println("Name: ");
+        System.out.print("Terminal Name: ");
         name = input.nextLine();
 
-        System.out.println("Address: ");
+        System.out.print("Address: ");
         address = input.nextLine();
 
         System.out.println("Area: ");
         area = input.nextInt();
         input.nextLine();
 
-        System.out.println("Input rail count");
+        System.out.print("Input rail count: ");
         inputRailCount = input.nextInt();
         input.nextLine();
 
-        System.out.println("Output rail count");
+        System.out.print("Output rail count: ");
         outputRailCount = input.nextInt();
         input.nextLine();
 
 
-        RailwayStation newRailwayStation = new RailwayStation(costToBuild, cityName, name, address, area, inputRailCount, outputRailCount);
+        RailwayStation newRailwayStation = new RailwayStation(costToBuild, city.getName(), name, address, area, inputRailCount, outputRailCount);
         city.getTerminals().add(newRailwayStation);
 
         System.out.println("The railway station has been built successfully");
@@ -606,12 +602,11 @@ public class CityConsole {
 
         //terminal
         int costToBuild;
-        String cityName;
         String name;
         String address;
         int area;
 
-        System.out.println("Cost to build: ");
+        System.out.print("Cost to build: ");
         costToBuild = input.nextInt();
         input.nextLine();
 
@@ -622,20 +617,17 @@ public class CityConsole {
             city.setBudget(city.getBudget() - costToBuild);
         }
 
-        System.out.println("city name: ");
-        cityName = input.nextLine();
-
-        System.out.println("Name: ");
+        System.out.print("Terminal Name: ");
         name = input.nextLine();
 
         System.out.println("Address: ");
         address = input.nextLine();
 
-        System.out.println("Area: ");
+        System.out.print("Area: ");
         area = input.nextInt();
         input.nextLine();
 
-        BusTerminal newBusTerminal = new BusTerminal(costToBuild, cityName, name, address, area);
+        BusTerminal newBusTerminal = new BusTerminal(costToBuild, city.getName(), name, address, area);
         city.getTerminals().add(newBusTerminal);
 
         System.out.println("The bus terminal has been built successfully");
@@ -646,14 +638,13 @@ public class CityConsole {
 
         //terminal
         int costToBuild;
-        String cityName;
         String name;
         String address;
         int area;
         //shipping port
         int wharfCount;
 
-        System.out.println("Cost to build: ");
+        System.out.print("Cost to build: ");
         costToBuild = input.nextInt();
         input.nextLine();
 
@@ -664,24 +655,21 @@ public class CityConsole {
             city.setBudget(city.getBudget() - costToBuild);
         }
 
-        System.out.println("city name: ");
-        cityName = input.nextLine();
-
-        System.out.println("Name: ");
+        System.out.print("Terminal Name: ");
         name = input.nextLine();
 
-        System.out.println("Address: ");
+        System.out.print("Address: ");
         address = input.nextLine();
 
-        System.out.println("Area: ");
+        System.out.print("Area: ");
         area = input.nextInt();
         input.nextLine();
 
-        System.out.println("Wharf count: ");
+        System.out.print("Wharf count: ");
         wharfCount = input.nextInt();
         input.nextLine();
 
-        ShippingPort newShippingPort = new ShippingPort(costToBuild, cityName, name, address, area, wharfCount);
+        ShippingPort newShippingPort = new ShippingPort(costToBuild, city.getName(), name, address, area, wharfCount);
         city.getTerminals().add(newShippingPort);
 
         System.out.println("The shipping port has been built successfully");
@@ -697,10 +685,10 @@ public class CityConsole {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Name: ");
+        System.out.print("Name: ");
         name = input.nextLine();
 
-        System.out.println("Cost To Build: ");
+        System.out.print("Cost To Build: ");
         costToBuild = input.nextInt();
 
         if (costToBuild > city.getBudget()) {
@@ -711,11 +699,11 @@ public class CityConsole {
         System.out.println("Address: ");
         address = input.nextLine();
 
-        System.out.println("Star count: ");
+        System.out.print("Star count: ");
         starCount = input.nextInt();
 
 
-        System.out.println("Room count");
+        System.out.print("Room count");
         roomCount = input.nextInt();
 
         Hotel newHotel = new Hotel(name, costToBuild, address, starCount, roomCount);
@@ -733,7 +721,7 @@ public class CityConsole {
         }
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the hotel to add rooms to");
+        System.out.print("Enter the hotel ID to add rooms to");
         int hotelID = input.nextInt();
         input.nextLine();
         Hotel selectedOne = city.getHotels().get(hotelID);
@@ -743,20 +731,19 @@ public class CityConsole {
         int area;
         int accommodationPrice;
 
-        System.out.println("Room count: ");
+        System.out.print("Room Number: ");
         roomNum = input.nextLine();
 
-        System.out.println("Bed count: ");
+        System.out.print("Bed count: ");
         bedCount = input.nextInt();
 
-        System.out.println("Area: ");
+        System.out.print("Area: ");
         area = input.nextInt();
 
-        System.out.println("accommodation price: ");
+        System.out.print("Inhabitancy Price: ");
         accommodationPrice = input.nextInt();
 
         Room newRoom = new Room(roomNum, bedCount, area, accommodationPrice);
         selectedOne.getRooms().add(newRoom);
-
     }
 }
